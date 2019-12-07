@@ -1,6 +1,6 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/joeke80215/safetyrecevier)](https://goreportcard.com/report/github.com/joeke80215/safetyrecevier)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/joeke80215/safetyrecevier/blob/master/LICENSE)
-# softrecevier
+# safetyrecevier
 
 golang package for receiving large file
 
