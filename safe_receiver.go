@@ -31,10 +31,10 @@ type SafeReceive struct {
 	maxMemorySize int
 	b             []byte
 	byteSize      int
+	isLargeFile   bool
 	tmpFile       *os.File
 	tmpFileRead   tmpFileReader
 	reader        *bytes.Reader
-	mode          string
 	handle        handler
 }
 
@@ -85,12 +85,18 @@ func (s *SafeReceive) append(chunk []byte, n int) {
 	s.b = append(s.b, chunk[:n]...)
 	var chunkSize int
 	if chunkSize = len(chunk); chunkSize >= s.maxMemorySize || chunkSize+s.byteSize >= s.maxMemorySize {
+		s.isLargeFile = true
 		s.setLargeFileHandler()
 		s.initTmpFile()
 		s.flush()
 		return
 	}
 	s.byteSize += chunkSize
+}
+
+// GetIsLargeFile is the large file
+func (s *SafeReceive) GetIsLargeFile() bool {
+	return s.isLargeFile
 }
 
 func (s *SafeReceive) largeFileAppend(chunk []byte, n int) {
