@@ -99,6 +99,14 @@ func (s *SafeReceive) GetIsLargeFile() bool {
 	return s.isLargeFile
 }
 
+// GetTmpFilePath get tmp file path
+func (s *SafeReceive) GetTmpFilePath() string {
+	if s.tmpFile == nil {
+		return ""
+	}
+	return s.tmpFile.Name()
+}
+
 func (s *SafeReceive) largeFileAppend(chunk []byte, n int) {
 	if _, err := s.tmpFile.Write(chunk[:n]); err != nil {
 		panic(err)
