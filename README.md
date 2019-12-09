@@ -4,6 +4,11 @@
 
 golang package for receiving large file
 
+## install
+```
+go get -u github.com/joeke80215/safetyrecevier
+```
+
 ## receive
 ```go
 safeReceive := softrecevier.New()
