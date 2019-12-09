@@ -162,6 +162,8 @@ func (s *SafeReceive) closeReceive() (err error) {
 func (s *SafeReceive) closeReader() (err error) {
 	if s.tmpFileRead != nil {
 		err = s.tmpFileRead.Close()
+	}
+	if s.tmpFile != nil {
 		os.Remove(s.tmpFile.Name())
 	}
 	return
