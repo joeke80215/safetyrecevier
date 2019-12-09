@@ -99,6 +99,11 @@ func (s *SafeReceive) GetIsLargeFile() bool {
 	return s.isLargeFile
 }
 
+// GetBytes get bytes if the large file return nil
+func (s *SafeReceive) GetBytes() []byte {
+	return s.b
+}
+
 // GetTmpFilePath get tmp file path
 func (s *SafeReceive) GetTmpFilePath() string {
 	if s.tmpFile == nil {
