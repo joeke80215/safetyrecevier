@@ -11,7 +11,8 @@ go get -u github.com/joeke80215/safetyrecevier
 
 ## receive
 ```go
-safeReceive := softrecevier.New()
+maxMemoeryBufSize := 4 << 20
+safeReceive := softrecevier.New(maxMemoeryBufSize)
 defer safeReceive.CloseReceive()
 
 for {

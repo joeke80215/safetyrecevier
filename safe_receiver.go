@@ -34,7 +34,7 @@ type SafeReceive struct {
 	handle        handler
 }
 
-// New receiver,default max buffer size 4MB
+// New receiver
 func New(maxSize int) *SafeReceive {
 	sr := &SafeReceive{
 		maxMemorySize: maxSize,
