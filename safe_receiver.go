@@ -6,10 +6,6 @@ import (
 	"os"
 )
 
-const (
-	defaultMaxMemorySize = 4 << 20 // 4MB
-)
-
 type readHandler func([]byte) (int, error)
 type seekHandler func(int64, int) (int64, error)
 type appendHandler func([]byte, int)
@@ -39,14 +35,9 @@ type SafeReceive struct {
 }
 
 // New receiver,default max buffer size 4MB
-func New(maxSize ...int) *SafeReceive {
-	if len(maxSize) == 0 {
-		return &SafeReceive{
-			maxMemorySize: defaultMaxMemorySize,
-		}
-	}
+func New(maxSize int) *SafeReceive {
 	sr := &SafeReceive{
-		maxMemorySize: maxSize[0],
+		maxMemorySize: maxSize,
 	}
 	sr.handle = handler{
 		read:   sr.read,
